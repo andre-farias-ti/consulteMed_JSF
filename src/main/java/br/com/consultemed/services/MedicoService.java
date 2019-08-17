@@ -25,7 +25,11 @@ public class MedicoService {
 	}
 	
 	public void salvarMedico(Medico medico) {
-		this.dao.salvarMedico(medico);
+		if(this.dao.buscaPorCrm(medico.getCrm())==null){
+			this.dao.salvarMedico(medico);
+		}else {
+			System.out.print("já tem medico com esse crm");
+		}
 	}
 	
 	public void deletarMedico(Long id) throws Exception {

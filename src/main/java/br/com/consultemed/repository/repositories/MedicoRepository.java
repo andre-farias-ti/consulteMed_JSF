@@ -99,15 +99,13 @@ public class MedicoRepository {
 		
 	}
 	
-	public boolean buscaPorNome(String crm) {
+	public Medico buscaPorCrm(String crm) {
 		this.factory.getTransaction().begin();
 		Query query = 
 				this.factory.createQuery("SELECT m FROM Medico m WHERE c.crm = :crm");
 		query.setParameter("crm", crm);
 		Medico medico = (Medico) query.getSingleResult();
-		if(medico==null) {
-			return true;
-		}else {return false;} 
+		return medico;
 		
 	}
 	
